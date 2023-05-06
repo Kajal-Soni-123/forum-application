@@ -1,8 +1,18 @@
 <!--including the data base-->
+
+<?php
+$error="false";
+$admin_error="";
+if(isset($_GET['admin_loginerror'])){
+  $admin_error=$_GET['admin_loginerror'];
+  $error="true";
+}
+?>
 <?php
 //include '\xampp\htdocs\forum\db.php';
 include '\xampp\htdocs\forum\_header.php';
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,13 +22,25 @@ include '\xampp\htdocs\forum\_header.php';
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Coding Forum</title>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Medi Care </title>
   </head>
   <body>
   <!--including the header-->
     <?php 
     //include '\xampp\htdocs\forum\_header.php';
+    ?>
+    <?php
+    if($error=="true"){
+      echo'
+      <div class="alert alert-warning alert-dismissible fade m-0 show" role="alert">
+  '.$admin_error.'
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+      ';
+    }
     ?>
   <!--the slider container starts here -->
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -55,10 +77,11 @@ while($row=mysqli_fetch_assoc($result)){
   $cat_id=$row['category_id'];
  $name= $row['category_name'];
  $discription=$row['category_discription'];
+ $image=$row['image'];
 
 echo'<div class="col-md-4 my-2">      
         <div class="card" style="width: 18rem height:30rem;">
-         <img src="https://source.unsplash.com/random/400x500/?'.$name.'" class="card-img-top">
+         <img class="card_image" src="forum_image/'.$image.'" class="card-img-top">
          <div class="card-body">
             <h5 class="card-title"><a href="/forum/threadlist.php?catid='.$cat_id.'">'.$name.'</a></h5>
          <p class="card-text">'.substr($discription,0,50).'.....</p>

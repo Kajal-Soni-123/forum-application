@@ -11,13 +11,13 @@ $sql="SELECT * FROM `thread` WHERE thread_id='$id'";
 $result=mysqli_query($conn,$sql);
 $num =mysqli_num_rows($result);
 while($row=mysqli_fetch_assoc($result)){
- $ttitle= $row['thread_title'];
+ $title= $row['thread_title'];
  $tdesc=$row['thread_desc'];
  $u_id=$row['thread_user_id'];
  $sql2="SELECT * FROM `login` WHERE user_id='$u_id'";
  $result2=mysqli_query($conn,$sql2);
- $row=mysqli_fetch_assoc($result2);
- $name=$row['user_name'];
+ $row2=mysqli_fetch_assoc($result2);
+ $name=$row2['user_name'];
 }
 ?>
 
@@ -69,7 +69,7 @@ if($method=='POST'){
     <!--Ihave put the jumbo tron here-->
     
     <div class="jumbotron container my-4">
-  <h1 class="display-4"><?php echo $ttitle ?></h1>
+  <h1 class="display-4"><?php echo $title ?></h1>
   <b class="lead"><?php echo $tdesc?></b>
   <hr class="my-4">
   <p>Guidelines to be followed while using this forum are as follows:Introduce yourself,Ask your question, Participate,Do not dominate the discussion</p><br>

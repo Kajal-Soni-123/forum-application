@@ -103,6 +103,7 @@ $desc=$row['thread_desc'];
 $tid=$row['thread_category_id'];
 $t_user_id=$row['thread_user_id'];
 $thread_time=$row['time'];
+$t_id=$row['thread_id'];
 $sql2="SELECT * FROM `login` WHERE user_id='$t_user_id'";
 $result2=mysqli_query($conn,$sql2);
 $row2=mysqli_fetch_assoc($result2);
@@ -111,7 +112,7 @@ echo'<div class="media container">
 <img height="70px" width="60px" src="https://tse4.mm.bing.net/th?id=OIP.RkwFcXHFD8E_xorEIAmCgAAAAA&pid=Api&P=0" class="align-self-start mr-3" alt="...">
 <div class="media-body">
 <p class="font-weight-bold my-0">Asked by '.$email.' at '.$thread_time.'</p>
-  <h5 class="mt-0"><a class="text-dark" href="/forum/thread.php?threadid='.$id.'">'.$title.'</a></h5>
+  <h5 class="mt-0"><a class="text-dark" href="/forum/thread.php?threadid='.$t_id.'">'.$title.'</a></h5>
   <p>'.$desc.'</p>
 </div>
 </div>';

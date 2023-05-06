@@ -44,10 +44,16 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <button type="button" class="btn btn-success ml-2" data-toggle="modal" data-target="#signinModal">
  Sign up
 </button>
+<button type="button" class="btn btn-success ml-2" data-toggle="modal" data-target="#adminModal">
+ Admin Login
+</button>
 <button type="button" class="btn btn-success ml-2"><a class="text-light" href="/forum/logout.php">log out</a></button>
+
 <div>
 </div>
 </nav>';
 include '\xampp\htdocs\forum\login.php';
 include '\xampp\htdocs\forum\signin.php';
+include '\xampp\htdocs\forum\admin_login.php';
+
 ?>
